@@ -57,7 +57,8 @@
 		<hr>
 		
 		<script>
-			//window.onload = function(){
+			var nmax=0;
+			window.onload = function(){
 				var code0="<p><a id=\"food@\"></a><br><a id=\"price@\"></a> x <a id=\"n@\">0</a><br><input type=\"range\" class=\"srider\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\"></p>\n"
 
 				// CSVファイルを取得
@@ -84,6 +85,7 @@
 				for (let i = 0; i < lines.length; ++i) {
 					let cells = lines[i].split(",");
 					if (cells.length != 1) {
+						nmax++;
 						let str = code0.split("@");
 						area1.innerHTML=area1.innerHTML+str.join(i);
 						eval('food'+i).innerText=cells[0];
@@ -91,11 +93,11 @@
 
 					}
 				}
-			//}
+			}
 
-			function calc(){
+			area1.onchange = function calc(){
 				var a = 0;
-				for (var j=0, max=lines.length; j<=max; j++){
+				for (var j=0, max=nmax; j<=max; j++){
 					msg.innerText=j;
 					var price = parseInt(document.getElementById('price'+j).innerText,10);
 					var quant = parseInt(document.getElementById('quant'+j).value,10);
@@ -104,14 +106,14 @@
 				msg.innerText=a;
 			}
 			function reset(){
-				for (var k=0, max=lines.length; k<=max; k++){
+				for (var k=0, max=nmax; k<=max; k++){
 					document.getElementById('quant'+k).value="0";
 					eval('n'+k).innerText="0";
 				}
 				msg.innerText="0";
 			}
 			
-			for (var i=0, max=lines.length; i<=max; i++){
+			for (var i=0, max=nmax; i<=max; i++){
 				var elem = document.getElementById('quant'+i);
 				var target = document.getElementById('n'+i);
 				var rangeValue = function (elem, target) {
