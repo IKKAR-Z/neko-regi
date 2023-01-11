@@ -81,7 +81,7 @@
 			// 1行ごとに処理
 
 			for (let i = 0; i < lines.length; ++i) {
-				area1.innerHTML=code0.replace("@",i);
+				area1.innerHTML=code0.replace(\@\g,i);
 
   				let cells = lines[i].split(",");
   				if (cells.length != 1) {
