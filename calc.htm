@@ -93,12 +93,12 @@
 
 					}
 				}
-				console.log("nmax:"nmax);
+				console.log("nmax:"+nmax);
 			//}
 
 			area1.onchange = function calc(){
 				let a = 0;
-				console.log("nmax:"nmax);
+				console.log("nmax:"+nmax);
 				for (var j=0, max=nmax; j<=max; j++){
 					console.log("j:"+j);	
 					let price = parseInt(document.getElementById('price'+j).innerText,10);
@@ -109,7 +109,7 @@
 				msg.innerText=a;
 			}
 			function reset(){
-				console.log("nmax:"nmax);
+				console.log("nmax:"+nmax);
 				for (var k=0, max=nmax; k<=max; k++){
 					console.log("k:"+k);
 					document.getElementById('quant'+k).value="0";
