@@ -82,18 +82,23 @@
 				// 1行ごとに処理
 
 				for (let i = 0; i < lines.length; ++i) {
-					let str = code0.split("@");
-					codeadd = codeadd+str.join(i);
 					let cells = lines[i].split(",");
 					if (cells.length != 1) {
-						csvArray.push(cells);
+						let str = code0.split("@");
+						//codeadd = codeadd+str.join(i);
+						area1.innerHTML=area1.innerHTML+str.join(i);
+						eval('food'+i).innerText=cells[0];
+						eval('price'+i).innerText=cells[1];
+						//csvArray.push(cells);
 					}
 				}
+				/*
 				area1.innerHTML=codeadd;
 				for (let i = 0; i < lines.length; ++i){
 					eval('food'+i).innerText=csvArray[i][0];
 					eval('price'+i).innerText=csvArray[i][1];
 				}
+				*/
 			}
 
 			function calc(){
