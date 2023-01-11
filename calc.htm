@@ -95,7 +95,7 @@
 
 			function calc(){
 				var a = 0;
-				for (var j=1, max=22; j<=max; j++){
+				for (var j=0, max=lines.length; j<=max; j++){
 					msg.innerText=j;
 					var price = parseInt(document.getElementById('price'+j).innerText,10);
 					var quant = parseInt(document.getElementById('quant'+j).value,10);
@@ -104,14 +104,14 @@
 				msg.innerText=a;
 			}
 			function reset(){
-				for (var k=1, max=22; k<=max; k++){
+				for (var k=0, max=lines.length; k<=max; k++){
 					document.getElementById('quant'+k).value="0";
 					eval('n'+k).innerText="0";
 				}
 				msg.innerText="0";
 			}
 			
-			for (var i=1, max=22; i<=max; i++){
+			for (var i=0, max=lines.length; i<=max; i++){
 				var elem = document.getElementById('quant'+i);
 				var target = document.getElementById('n'+i);
 				var rangeValue = function (elem, target) {
