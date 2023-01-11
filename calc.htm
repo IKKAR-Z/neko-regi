@@ -99,18 +99,20 @@
 			area1.onchange = function calc(){
 				let a = 0;
 				console.log("nmax:"+nmax);
-				for (var j=0, max=nmax; j<=max; j++){
+				for (var j=0, max=nmax; j<max; j++){
 					console.log("j:"+j);	
 					let price = parseInt(document.getElementById('price'+j).innerText,10);
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
-					let a = a+price*quant;
+					console.log("price:"+price);	
+					console.log("quant:"+quant);	
+					a = a+price*quant;
 				}
 
 				msg.innerText=a;
 			}
 			function reset(){
 				console.log("nmax:"+nmax);
-				for (var k=0, max=nmax; k<=max; k++){
+				for (var k=0, max=nmax; k<max; k++){
 					console.log("k:"+k);
 					document.getElementById('quant'+k).value="0";
 					eval('n'+k).innerText="0";
@@ -118,7 +120,7 @@
 				msg.innerText="0";
 			}
 			
-			for (var i=0, max=nmax; i<=max; i++){
+			for (var i=0, max=nmax; i<max; i++){
 				console.log("i:"+i);
 				let elem = document.getElementById('quant'+i);
 				let target = document.getElementById('n'+i);
