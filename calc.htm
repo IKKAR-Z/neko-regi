@@ -88,7 +88,7 @@
 					a = a+price*quant;
 				}
 
-				msg.innerText=a;
+				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(a);
 			}
 			function reset(){
 				console.log("nmax:"+nmax);
