@@ -21,10 +21,6 @@
 			font-size: xx-large;
 		}
 		content_class{
-			display: flex;
-			flex-flow: column wrap;
-			list-style-type: none;
-			height: 50rem;
 		}
 		
 		.tab_class {
@@ -58,7 +54,11 @@
 		}
 
 		input:checked + .tab_class + .content_class {
-			display: block;
+			display: flex;
+			flex-flow: column wrap;
+			list-style-type: none;
+			height: 50rem;
+			//display: block;
 			//選択されたタブの中身を表示に
 		}
 
