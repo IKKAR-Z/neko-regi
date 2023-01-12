@@ -65,7 +65,7 @@
 			<input type="button" value="消去" onclick="reset()"><a id="msg">&yen;0</a>
 		</h1>
 		<hr>
-		<div class="tab_area" id="tabs">
+		<div class="tab_area" id="tabs" onchange="tab_button()">
 			<input type="radio" name="tab_name" id="tab1" >
 			<label class="tab_class" for="tab1">フード</label>
 			<input type="radio" name="tab_name" id="tab2" >
@@ -172,7 +172,7 @@
 			const radio_btn = document.getElementsByName('tab_name');
 			radio_btn[1].checked = true;
 			tab_button();
-			tabs.onchange = tab_button();
+			//tabs.onchange = tab_button();
 			
 			for (var i=0, max=nmax; i<max; i++){
 				let elem = document.getElementById('quant'+i);
