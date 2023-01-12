@@ -144,7 +144,7 @@
 
 			// 1行ごとに処理
 
-			for (let i = 3; i < lines.length+3; ++i) {
+			for (let i = 0; i < lines.length; ++i) {
 				let cells = lines[i].split(",");
 				if (cells.length != 1) {
 					nmax++;
@@ -154,8 +154,8 @@
 					}else if(cells[2]=="drink"){
 						page2.innerHTML=page2.innerHTML+str.join(i);
 					}
-					eval('food'+i).innerText=cells[0];
-					eval('price'+i).innerText=cells[1];
+					eval('food'+(i+3)).innerText=cells[0];
+					eval('price'+(i+3)).innerText=cells[1];
 
 				}
 			}
@@ -190,11 +190,11 @@
 				let elements = document.getElementsByName('tab_name');
 				let len =elements.length;
 				for (let i=0; i<len; i++){
-					let j = i+1;
+					//let j = i+1;
 					if (elements.item(i).checked){
-						document.getElementById("page"+j).style.display =  "flex";
+						document.getElementById("page"+(j+1)).style.display =  "flex";
 					}else{
-						document.getElementById("page"+j).style.display =  "none";
+						document.getElementById("page"+(j+1)).style.display =  "none";
 					}
 				}
 			}
@@ -202,7 +202,6 @@
 			const radio_btn = document.getElementsByName('tab_name');
 			radio_btn[0].checked = true;
 			tab_button();
-			//tabs.onchange = tab_button();
 			
 			for (var i=0, max=nmax+3; i<max; i++){
 				let elem = document.getElementById('quant'+i);
