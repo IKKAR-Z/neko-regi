@@ -65,15 +65,14 @@
 			<input type="button" value="消去" onclick="reset()"><a id="msg">&yen;0</a>
 		</h1>
 		<hr>
-		
-		<p class="tab_area" id="tabs">
+		<div class="tab_area" id="tabs">
 			<input type="radio" name="tab_name" id="tab1" checked>
 			<label class="tab_class" for="tab1">フード</label>
 			<input type="radio" name="tab_name" id="tab2" >
 			<label class="tab_class" for="tab2">ドリンク</label>
 			<input type="radio" name="tab_name" id="tab3" >
 			<label class="tab_class" for="tab3">スペシャル</label>
-		</p>
+		</div>
 		<hr>
 		<div class="area1" id="area1">
 			<div class="content_class" id="page1">
@@ -138,7 +137,6 @@
 
 				}
 			}
-			tab_button();
 			
 			area1.onchange = function calc(){
 				let a = 0;
@@ -172,6 +170,8 @@
 					}
 				}
 			}
+			
+			tab_button();
 			
 			for (var i=0, max=nmax; i<max; i++){
 				let elem = document.getElementById('quant'+i);
