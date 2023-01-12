@@ -48,12 +48,6 @@
 		}
 
 		.content_class {
-			display: none;
-			width: 100%;
-			//タブの中身を非表示に
-		}
-
-		input:checked + .tab_class + .content_class {
 			display: flex;
 			flex-flow: column wrap;
 			list-style-type: none;
@@ -72,24 +66,22 @@
 		</h1>
 		<hr>
 		
-		<div class="area" id="area1">
+		<div class="area1" id="tabs">
 			<input type="radio" name="tab_name" id="tab1" checked>
 			<label class="tab_class" for="tab1">フード</label>
-			<div class="content_class" id="food_menu">
-
-			</div>
 			<input type="radio" name="tab_name" id="tab2" >
 			<label class="tab_class" for="tab2">ドリンク</label>
-			<div class="content_class" id="drink_menu">
-
-			</div>
 			<input type="radio" name="tab_name" id="tab3" >
 			<label class="tab_class" for="tab3">スペシャル</label>
-			<div class="content_class" id="special">
-				<p>スペシャル準備中</p>
-			</div>
 		</div>
-
+		
+		<div class="content_class" id="page1">
+		</div>
+		<div class="content_class" id="page2">
+		</div>
+		<div class="content_class2" id="page3">
+			<p>スペシャル準備中</p>
+		</div>
 		<!--
 		<div id="area1" class="menu-list">
 		</div>
@@ -135,9 +127,9 @@
 					nmax++;
 					let str = code0.split("@");
 					if (cells[2]=="food"){
-						food_menu.innerHTML=food_menu.innerHTML+str.join(i);
+						page1.innerHTML=page1.innerHTML+str.join(i);
 					}else if(cells[2]=="drink"){
-						drink_menu.innerHTML=drink_menu.innerHTML+str.join(i);
+						page2.innerHTML=page2.innerHTML+str.join(i);
 					}
 					eval('food'+i).innerText=cells[0];
 					eval('price'+i).innerText=cells[1];
@@ -161,6 +153,18 @@
 					eval('n'+k).innerText="0";
 				}
 				msg.innerText="\\0";
+			}
+			
+			tabs.onchange = function tab_button(){
+				let elements = document.getElementsByName('tab_name');
+				let len =elements.length;
+				for (let i=0; i<len; i++){
+					if (elements.item(i).checked){
+						document.getElementById("page"+i).style.display =  "flex";
+					}else{
+						document.getElementById("page"+i).style.display =  "none";
+					}
+				}
 			}
 			
 			for (var i=0, max=nmax; i<max; i++){
