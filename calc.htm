@@ -161,13 +161,13 @@
 				let elements = document.getElementsByName('tab_name');
 				let len =elements.length;
 				for (let i=0; i<len; i++){
+					console.log("len:", len);
+					console.log("i:", i);
 					if (elements.item(i).checked){
 						document.getElementById("page"+i).style.display =  "flex";
 					}else{
 						document.getElementById("page"+i).style.display =  "none";
 					}
-					console.log("len:", len);
-					console.log("i:", i);
 				}
 			}
 			
