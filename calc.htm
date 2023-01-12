@@ -20,7 +20,7 @@
 		h1 + a{
 			font-size: xx-large;
 		}
-		.menu-list{
+		.area{
 			display: flex;
 			flex-flow: column wrap;
 			list-style-type: none;
@@ -72,17 +72,15 @@
 		</h1>
 		<hr>
 		
-		<div class="area">
+		<div class="area" id="area1">
 			<input type="radio" name="tab_name" id="tab1" checked>
 			<label class="tab_class" for="tab1">フード</label>
-			<div class="content_class" id="food-menu">
-
+			<div class="content_class" id="food_menu">
 
 			</div>
 			<input type="radio" name="tab_name" id="tab2" >
 			<label class="tab_class" for="tab2">ドリンク</label>
-			<div class="content_class" id="drink-menu">
-
+			<div class="content_class" id="drink_menu">
 
 			</div>
 			<input type="radio" name="tab_name" id="tab3" >
@@ -137,9 +135,9 @@
 					nmax++;
 					let str = code0.split("@");
 					if (cells[2]=="food"){
-						food-menu.innerHTML=food-menu.innerHTML+str.join(i);
+						food_menu.innerHTML=food_menu.innerHTML+str.join(i);
 					}else if(cells[2]=="drink"){
-						drink-menu.innerHTML=drink-menu.innerHTML+str.join(i);
+						drink_menu.innerHTML=drink_menu.innerHTML+str.join(i);
 					}
 					eval('food'+i).innerText=cells[0];
 					eval('price'+i).innerText=cells[1];
