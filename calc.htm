@@ -25,9 +25,9 @@
 		
 		.tab_class {
 			width: calc(100%/3);
-			height: 50px;
+			height: 30px;
 			background-color: darkgrey;
-			line-height: 50px;
+			line-height: 30px;
 			font-size: 15px;
 			text-align: center;
 			display: block;
@@ -160,8 +160,6 @@
 				let elements = document.getElementsByName('tab_name');
 				let len =elements.length;
 				for (let i=0; i<len; i++){
-					console.log("len:", len);
-					console.log("i:", i);
 					let j = i+1;
 					if (elements.item(i).checked){
 						document.getElementById("page"+j).style.display =  "flex";
@@ -172,7 +170,7 @@
 			}
 			
 			const radio_btn = document.getElementsByName('tab_name');
-			radio_btn[0].checked = true;
+			radio_btn[1].checked = true;
 			
 			for (var i=0, max=nmax; i<max; i++){
 				let elem = document.getElementById('quant'+i);
