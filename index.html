@@ -6,78 +6,111 @@
 		,user-scalable=no" />
 	<style type="text/css">
 		<!--
-			body{
-  				user-select: none;
-			}
-			input.srider{
-				display: flex;
-				justify-content: flex-end;
-			}
+		body{
+			user-select: none;
+		}
+		.srider{
+			display: flex;
+			justify-content: flex-end;
+		}
+		h1{
+			text-align: center;
+			font-size: xx-large;
+		}
+		.menu-list{
+			width: 400px;
+			column-count: 2;
+			list-style-type: none;
+			text-align: left;
+		}
 		-->
 	</style>
 	</head>
 	<body>
-		<table width="400">
-		<tr><td>
-		<p>カップケーキ<br><a id="price1">3000</a> x <a id="n1">0</a><br><input type="range" class="srider" id="quant1" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>パンケーキ<br><a id="price2">5000</a> x <a id="n2">0</a><br><input type="range" class="srider" id="quant2" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td></tr><tr><td><p>チキンホットパイ<br><a id="price3">5000</a> x <a id="n3">0</a><br><input type="range" class="srider" id="quant3" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>ヌテラワッフル<br><a id="price4">5000</a> x <a id="n4">0</a><br><input type="range" class="srider" id="quant4" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td></tr><tr><td><p>カレー<br><a id="price5">5000</a> x <a id="n5">0</a><br><input type="range" id="quant5" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>オムライス<br><a id="price6">5000</a> x <a id="n6">0</a><br><input type="range" id="quant6" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td></tr><tr><td><p>カボチャグラタン<br><a id="price7">5000</a> x <a id="n7">0</a><br><input type="range" id="quant7" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>猫パンケーキ<br><a id="price8">50000</a> x <a id="n8">0</a><br><input type="range" id="quant8" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td></tr><tr><td><p>アイスクリーム<br><a id="price9">5000</a> x <a id="n9">0</a><br><input type="range" id="quant9" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>クレープ<br><a id="price10">5000</a> x <a id="n10">0</a><br><input type="range" id="quant10" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td></tr><tr><td><p>チョコレートマフィン<br><a id="price11">5000</a> x <a id="n11">0</a><br><input type="range" id="quant11" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>シュークリーム<br><a id="price12">5000</a> x <a id="n12">0</a><br><input type="range" id="quant12" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td></tr><tr><td><p>猫パフェ<br><a id="price13">10000</a> x <a id="n13">0</a><br><input type="range" id="quant13" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>プリン・ア・ラモード<br><a id="price14">20000</a> x <a id="n14">0</a><br><input type="range" id="quant14" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td></tr><tr><td><p>スペシャル<br><a id="price15">100000</a> x <a id="n15">0</a><br><input type="range" id="quant15" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>猫カフェコーヒー<br><a id="price16">10000</a> x <a id="n16">0</a><br><input type="range" id="quant16" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td></tr><tr><td><p>カフェラテ<br><a id="price17">10000</a> x <a id="n17">0</a><br><input type="range" id="quant17" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>ラムネ<br><a id="price18">3000</a> x <a id="n18">0</a><br><input type="range" id="quant18" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td></tr><tr><td><p>メロンクリームソーダ<br><a id="price19">3000</a> x <a id="n19">0</a><br><input type="range" id="quant19" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>ミルクティ<br><a id="price20">3000</a> x <a id="n20">0</a><br><input type="range" id="quant20" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td></tr><tr><td><p>ミルクシェイク<br><a id="price21">5000</a> x <a id="n21">0</a><br><input type="range" id="quant21" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</td><td><p>タピオカ<br><a id="price22">5000</a> x <a id="n22">0</a><br><input type="range" id="quant22" min="0" max="20" value="0" step="1" onChange="calc()"></p>
-		</table>
+		<div id="area1" class="menu-list">
+		</div>
+		<datalist id="tickmarks">
+			<option value="0"></option>
+			<option value="4"></option>
+			<option value="8"></option>
+			<option value="12"></option>
+			<option value="16"></option>
+			<option value="20"></option>
+		</datalist>
+		<hr>
+		<h1>
+			<p id="msg">&yen;0</p>
+		</h1>
+		<hr>
 		<p><input type="button" value="消去" onclick="reset()"></p>
-
-		<hr>
-			<div style="text-align: center">
-			<font size="7" id="msg">0</font>
-			</div>
-		<hr>
 		
 		<script>
-			for (var i=1, max=22; i<=max; i++){
-				var elem = document.getElementById('quant'+i);
-				var target = document.getElementById('n'+i);
-				var rangeValue = function (elem, target) {
+			let nmax=0;
+
+			let code0="<li><a id=\"food@\"></a><br><a id=\"price@\"></a> x <a id=\"n@\">0</a><br><a class=\"srider\"><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></a><br></li>\n"
+
+			// CSVファイルを取得
+			let csv = new XMLHttpRequest();
+
+			// CSVファイルへのパス
+			csv.open("GET", "menu-list.csv", false);
+
+			// csvファイル読み込み失敗時のエラー対応
+			try {
+				csv.send(null);
+			} catch (err) {
+				console.log(err);
+			}
+
+			// 配列を定義
+			let csvArray = [];
+
+			// 改行ごとに配列化
+			let lines = csv.responseText.split(/\r\n|\n/);
+
+			// 1行ごとに処理
+
+			for (let i = 0; i < lines.length; ++i) {
+				let cells = lines[i].split(",");
+				if (cells.length != 1) {
+					nmax++;
+					let str = code0.split("@");
+					area1.innerHTML=area1.innerHTML+str.join(i);
+					eval('food'+i).innerText=cells[0];
+					eval('price'+i).innerText=cells[1];
+
+				}
+			}
+
+			area1.onchange = function calc(){
+				let a = 0;
+				for (var j=0, max=nmax; j<max; j++){
+					let price = parseInt(document.getElementById('price'+j).innerText,10);
+					let quant = parseInt(document.getElementById('quant'+j).value,10);
+					a = a+price*quant;
+				}
+
+				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(a);
+			}
+			function reset(){
+				for (var k=0, max=nmax; k<max; k++){
+					document.getElementById('quant'+k).value="0";
+					eval('n'+k).innerText="0";
+				}
+				msg.innerText="0";
+			}
+			
+			for (var i=0, max=nmax; i<max; i++){
+				let elem = document.getElementById('quant'+i);
+				let target = document.getElementById('n'+i);
+				let rangeValue = function (elem, target) {
 					return function(evt) {
 						target.innerHTML = elem.value;
 					}
 				}
 				elem.addEventListener('input', rangeValue(elem,target));
 			}
-			function calc(){
-				var a = 0;
-				for (var j=1, max=22; j<=max; j++){
-					msg.innerText=j;
-					var price = parseInt(document.getElementById('price'+j).innerText,10);
-					var quant = parseInt(document.getElementById('quant'+j).value,10);
-					var a = a+price*quant;
-				}
-				msg.innerText=a;
-			}
-			function reset(){
-				for (var k=1, max=22; k<=max; k++){
-					document.getElementById('quant'+k).value="0";
-					eval('n'+k).innerText="0";
-				}
-				msg.innerText="0";
-			}
+			
 		</script>
 	</body>
 </html>
