@@ -82,7 +82,7 @@
 			<div class="content_class" id="page3">
 				<li>
 				<input type="number" id="sp0" value="0">
-				<label for="sp1">スペシャル1(価格)</label>
+				<label for="sp0">スペシャル1(価格)</label>
 				x 
 				<a id="n0">0</a>
 				<a class=\"srider\">
@@ -100,7 +100,7 @@
 				<li>
 				<li>
 				<input type="number" id="sp2" value="0">
-				<label for="sp1">スペシャル3(価格)</label>
+				<label for="sp2">スペシャル3(価格)</label>
 				x 
 				<a id="n2">0</a>
 				<a class=\"srider\">
@@ -163,12 +163,15 @@
 			area1.onchange = function calc(){
 				let a = 0;
 				for (var j=0, max=nmax+3; j<max; j++){
+					console.log('j:' , j);
 					if (j<=3){
 						let price = parseInt(document.getElementById('sp'+j).value,10);
 					}else{
 						let price = parseInt(document.getElementById('price'+j).innerText,10);
 					}
+					console.log('price:' , price);
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
+					console.log('quant:' , quant);
 					a = a+price*quant;
 				}
 
@@ -190,7 +193,6 @@
 				let elements = document.getElementsByName('tab_name');
 				let len =elements.length;
 				for (let i=0; i<len; i++){
-					//let j = i+1;
 					if (elements.item(i).checked){
 						document.getElementById("page"+(i+1)).style.display =  "flex";
 					}else{
