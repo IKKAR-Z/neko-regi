@@ -160,7 +160,7 @@
 			tabs.onchange = function tab_button(){
 				let elements = document.getElementsByName('tab_name');
 				let len =elements.length;
-				for (let i=0; i<len; i++){
+				for (let i=1; i<=len; i++){
 					console.log("len:", len);
 					console.log("i:", i);
 					if (elements.item(i).checked){
