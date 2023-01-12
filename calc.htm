@@ -81,30 +81,30 @@
 			</div>
 			<div class="content_class" id="page3">
 				<li>
-				<input type="number" id="sp1" value="0">
+				<input type="number" id="sp0" value="0">
 				<label for="sp1">スペシャル1(価格)</label>
 				x 
-				<a id="n_sp1">0</a>
+				<a id="n0">0</a>
 				<a class=\"srider\">
-					<input type="range" id="quant_sp1" min="0" max="20" value="0" step="1" list="tickmarks">
+					<input type="range" id="quant0" min="0" max="20" value="0" step="1" list="tickmarks">
 				</a><br>
 				<li>
 				<li>
 				<input type="number" id="sp1" value="0">
 				<label for="sp1">スペシャル2(価格)</label>
 				x 
-				<a id="n_sp2">0</a>
+				<a id="n1">0</a>
 				<a class=\"srider\">
-					<input type="range" id="quant_sp2" min="0" max="20" value="0" step="1" list="tickmarks">
+					<input type="range" id="quant1" min="0" max="20" value="0" step="1" list="tickmarks">
 				</a><br>
 				<li>
 				<li>
-				<input type="number" id="sp1" value="0">
+				<input type="number" id="sp2" value="0">
 				<label for="sp1">スペシャル3(価格)</label>
 				x 
-				<a id="n_sp3">0</a>
+				<a id="n2">0</a>
 				<a class=\"srider\">
-					<input type="range" id="quant_sp3" min="0" max="20" value="0" step="1" list="tickmarks">
+					<input type="range" id="quant2" min="0" max="20" value="0" step="1" list="tickmarks">
 				</a><br>
 				<li>
 			</div>
@@ -144,7 +144,7 @@
 
 			// 1行ごとに処理
 
-			for (let i = 0; i < lines.length; ++i) {
+			for (let i = 3; i < lines.length+3; ++i) {
 				let cells = lines[i].split(",");
 				if (cells.length != 1) {
 					nmax++;
@@ -162,14 +162,13 @@
 			
 			area1.onchange = function calc(){
 				let a = 0;
-				for (var j=0, max=nmax; j<max; j++){
-					let price = parseInt(document.getElementById('price'+j).innerText,10);
+				for (var j=0, max=nmax+3; j<max; j++){
+					if (j<=3){
+						let price = parseInt(document.getElementById('sp'+j).value,10);
+					}else{
+						let price = parseInt(document.getElementById('price'+j).innerText,10);
+					}
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
-					a = a+price*quant;
-				}
-				for (var j=1, max=3; j<=max; j++){
-					let price = parseInt(document.getElementById('sp'+j).value,10);
-					let quant = parseInt(document.getElementById('quant_sp'+j).value,10);
 					a = a+price*quant;
 				}
 
@@ -177,13 +176,11 @@
 			}
 			
 			function reset(){
-				for (var k=0, max=nmax; k<max; k++){
+				for (var k=0, max=nmax+3; k<max; k++){
 					document.getElementById('quant'+k).value="0";
 					eval('n'+k).innerText="0";
 				}
-				for (var k=1, max=3; k<=max; k++){
-					document.getElementById('quant_sp'+k).value="0";
-					eval('n_sp'+k).innerText="0";
+				for (var k=0, max=3; k<max; k++){
 					document.getElementById('sp'+k).value="0";
 				}
 				msg.innerText="\\0";
@@ -207,7 +204,7 @@
 			tab_button();
 			//tabs.onchange = tab_button();
 			
-			for (var i=0, max=nmax; i<max; i++){
+			for (var i=0, max=nmax+3; i<max; i++){
 				let elem = document.getElementById('quant'+i);
 				let target = document.getElementById('n'+i);
 				let rangeValue = function (elem, target) {
