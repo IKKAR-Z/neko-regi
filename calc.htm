@@ -163,10 +163,11 @@
 				for (let i=0; i<len; i++){
 					console.log("len:", len);
 					console.log("i:", i);
+					let j = i+1;
 					if (elements.item(i).checked){
-						document.getElementById("page"+i+1).style.display =  "flex";
+						document.getElementById("page"+j).style.display =  "flex";
 					}else{
-						document.getElementById("page"+i+1).style.display =  "none";
+						document.getElementById("page"+j).style.display =  "none";
 					}
 				}
 			}
