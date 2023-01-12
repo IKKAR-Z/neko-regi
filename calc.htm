@@ -79,14 +79,36 @@
 			</div>
 			<div class="content_class" id="page2">
 			</div>
-			<div class="content_class2" id="page3">
-				<p>スペシャル準備中</p>
+			<div class="content_class" id="page3">
+				<li>
+				<input type="number" id="sp1" value="0">
+				<label for="sp1">スペシャル1(価格)</label>
+				x 
+				<a id="n_sp1">0</a>
+				<a class=\"srider\">
+					<input type="range" id="quant_sp1" min="0" max="20" value="0" step="1" list="tickmarks">
+				</a><br>
+				<li>
+				<li>
+				<input type="number" id="sp1" value="0">
+				<label for="sp1">スペシャル2(価格)</label>
+				x 
+				<a id="n_sp2">0</a>
+				<a class=\"srider\">
+					<input type="range" id="quant_sp2" min="0" max="20" value="0" step="1" list="tickmarks">
+				</a><br>
+				<li>
+				<li>
+				<input type="number" id="sp1" value="0">
+				<label for="sp1">スペシャル3(価格)</label>
+				x 
+				<a id="n_sp3">0</a>
+				<a class=\"srider\">
+					<input type="range" id="quant_sp3" min="0" max="20" value="0" step="1" list="tickmarks">
+				</a><br>
+				<li>
 			</div>
 		</div>
-		<!--
-		<div id="area1" class="menu-list">
-		</div>
-		-->
 		<datalist id="tickmarks">
 			<option value="0"></option>
 			<option value="4"></option>
@@ -145,13 +167,24 @@
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
 					a = a+price*quant;
 				}
+				for (var j=1, max=3; j<=max; j++){
+					let price = parseInt(document.getElementById('sp'+j).innerText,10);
+					let quant = parseInt(document.getElementById('quant_sp'+j).value,10);
+					a = a+price*quant;
+				}
 
 				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(a);
 			}
+			
 			function reset(){
 				for (var k=0, max=nmax; k<max; k++){
 					document.getElementById('quant'+k).value="0";
 					eval('n'+k).innerText="0";
+				}
+				for (var k=1, max=3; k<=max; k++){
+					document.getElementById('quant_sp'+k).value="0";
+					eval('n_sp'+k).innerText="0";
+					eval('sp'+k).innerText="0";
 				}
 				msg.innerText="\\0";
 			}
