@@ -25,8 +25,8 @@
 	</style>
 	</head>
 	<body>
-		<div id="area1" class="menu-list">
-		</div>
+		<ul id="area1" class="menu-list">
+		</ul>
 		<p><input type="button" value="消去" onclick="reset()"></p>
 
 		<hr>
@@ -38,7 +38,7 @@
 		<script>
 			let nmax=0;
 
-			let code0="<a id=\"food@\"></a><br><a id=\"price@\"></a> x <a id=\"n@\">0</a><br><a class=\"srider\"><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\"></a><br>\n"
+			let code0="<li><a id=\"food@\"></a><br><a id=\"price@\"></a> x <a id=\"n@\">0</a><br><a class=\"srider\"><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\"></a><br></li>\n"
 
 			// CSVファイルを取得
 			let csv = new XMLHttpRequest();
