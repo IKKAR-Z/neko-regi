@@ -165,7 +165,7 @@
 				for (var j=0, max=nmax+3; j<max; j++){
 					console.log('j:' , j);
 					if (j<=3){
-						let price = parseInt(document.getElementById('sp'+j).value,10);
+						let price = document.getElementById('sp'+j).value;
 					}else{
 						let price = parseInt(document.getElementById('price'+j).innerText,10);
 					}
