@@ -150,9 +150,9 @@
 					nmax++;
 					let str = code0.split("@");
 					if (cells[2]=="food"){
-						page1.innerHTML=page1.innerHTML+str.join(i);
+						page1.innerHTML=page1.innerHTML+str.join((i+3));
 					}else if(cells[2]=="drink"){
-						page2.innerHTML=page2.innerHTML+str.join(i);
+						page2.innerHTML=page2.innerHTML+str.join((i+3));
 					}
 					eval('food'+(i+3)).innerText=cells[0];
 					eval('price'+(i+3)).innerText=cells[1];
