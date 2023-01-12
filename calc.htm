@@ -26,6 +26,42 @@
 			list-style-type: none;
 			height: 50rem;
 		}
+		
+		.tab_class {
+			width: calc(100%/3);
+			height: 50px;
+			background-color: darkgrey;
+			line-height: 50px;
+			font-size: 15px;
+			text-align: center;
+			display: block;
+			float: left;
+			order: -1;
+			//タブ部の書式
+		}
+
+		input[name="tab_name"] {
+			display: none;
+			//ラジオボタン◎を非表示にする
+		}
+
+		input:checked + .tab_class {
+			background-color: cadetblue;
+			color: aliceblue;
+			//タブが選択された時の書式
+		}
+
+		.content_class {
+			display: none;
+			width: 100%;
+			//タブの中身を非表示に
+		}
+
+		input:checked + .tab_class + .content_class {
+			display: block;
+			//選択されたタブの中身を表示に
+		}
+
 		-->
 	</style>
 	</head>
@@ -36,8 +72,30 @@
 		</h1>
 		<hr>
 		
+		<div class="area">
+			<input type="radio" name="tab_name" id="tab1" checked>
+			<label class="tab_class" for="tab1">フード</label>
+			<div class="content_class" id="food-menu">
+
+
+			</div>
+			<input type="radio" name="tab_name" id="tab2" >
+			<label class="tab_class" for="tab2">ドリンク</label>
+			<div class="content_class" id="drink-menu">
+
+
+			</div>
+			<input type="radio" name="tab_name" id="tab3" >
+			<label class="tab_class" for="tab3">スペシャル</label>
+			<div class="content_class" id="special">
+				<p>スペシャル準備中</p>
+			</div>
+		</div>
+
+		<!--
 		<div id="area1" class="menu-list">
 		</div>
+		-->
 		<datalist id="tickmarks">
 			<option value="0"></option>
 			<option value="4"></option>
@@ -78,7 +136,11 @@
 				if (cells.length != 1) {
 					nmax++;
 					let str = code0.split("@");
-					area1.innerHTML=area1.innerHTML+str.join(i);
+					if (cells[2]=="food"){
+						food-menu.innerHTML=food-menu.innerHTML+str.join(i);
+					}else if(cells[2]=="drink"){
+						drink-menu.innerHTML=drink-menu.innerHTML+str.join(i);
+					}
 					eval('food'+i).innerText=cells[0];
 					eval('price'+i).innerText=cells[1];
 
