@@ -17,8 +17,10 @@
 
 		}
 		h1 > .gr2 {
+			width : 100%;
+			text-align: end;
 			background-color: rgb(255,255,200);
-			justify-self: end;
+			//justify-self: end;
 			font-size: xx-large;
 		}
 		.tab_area{
@@ -37,7 +39,6 @@
 			order: -1;
 			//タブ部の書式
 		}
-
 		input[name="tab_name"] {
 			display: none;
 			//ラジオボタン◎を非表示にする
@@ -48,15 +49,6 @@
 			color: aliceblue;
 			//タブが選択された時の書式
 		}
-		/*
-		.content_class {
-			display: flex;
-			flex-flow: column wrap;
-			list-style-type: none;
-			height: 45rem;
-			//選択されたタブの中身を表示に
-		}
-		*/
 		.content_class {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
@@ -76,12 +68,6 @@
 		.content_class > div > input{
 			width: 70%;
 			justify-self: end;
-		}
-		.gr11{
-			display: grid;
-			grid-template-columns: 100px 1fr 1fr 3fr;
-			align-items: center;
-			//justify-items: center;			
 		}
 		input[type="number"]{
 			width : 80px;
