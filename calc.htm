@@ -162,14 +162,15 @@
 			
 			area1.onchange = function calc(){
 				let a = 0;
+let price;
 				for (var j=0, max=nmax+3; j<max; j++){
 					console.log('j:' , j);
 					if (j<=3){
-						let price = document.getElementById('sp'+j).value;
+						price = document.getElementById('sp'+j).value;
 price=Number(price);
 						console.log(typeof(price));
 					}else{
-						let price = parseInt(document.getElementById('price'+j).innerText,10);
+						price = parseInt(document.getElementById('price'+j).innerText,10);
 					}
 					console.log('price:' , price);
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
