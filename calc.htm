@@ -10,8 +10,9 @@
 			user-select: none;
 		}
 		.srider{
-			display: flex;
-			justify-content: flex-end;
+			justify-self: end;
+			//display: flex;
+			//justify-content: flex-end;
 		}
 		h1{
 			display: grid;
@@ -67,8 +68,8 @@
 			grid-template-columns: 1fr 1fr;
 			grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px 100px;
 			grid-auto-flow: row;
-			align-items: left;
-			justify-items: center;			
+			align-items: center;
+			justify-items: left;			
 			//選択されたタブの中身を表示に
 		}
 		
@@ -222,7 +223,7 @@
 				const len =elements.length;
 				for (let i=0; i<len; i++){
 					if (elements.item(i).checked){
-						document.getElementById("page"+(i+1)).style.display =  "flex";
+						document.getElementById("page"+(i+1)).style.display =  "grid";
 					}else{
 						document.getElementById("page"+(i+1)).style.display =  "none";
 					}
