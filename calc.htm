@@ -18,7 +18,7 @@
 			grid-template-columns: 1fr 8fr 1fr;
 			//justify-content: space-around;
 		}
-		h1 + a{
+		h1 + .gr2 {
 			text-align: end;
 			font-size: xx-large;
 		}
@@ -62,7 +62,8 @@
 	<body>
 		<hr>
 		<h1>
-			<input type="button" value="消去" onclick="reset()"><a id="msg">&yen;0</a>
+			<div><input type="button" value="消去" onclick="reset()"></div>
+			<div id="msg" class="gr2">&yen;0</div>
 		</h1>
 		<hr>
 		<div class="tab_area" id="tabs" onchange="tab_button()">
