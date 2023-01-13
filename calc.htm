@@ -79,7 +79,7 @@
 		.gr1{
 			display: grid;
 			grid-template-columns: 100px 1fr 1fr 3fr;
-			//align-items: center;
+			align-items: center;
 			//justify-items: center;			
 		}
 		input[type="number"]{
@@ -125,7 +125,7 @@
 			let nmax=0;
 			const sp=3;
 			let code0="<div><a id=\"food@\"></a><div><a id=\"price@\"></a> x <a id=\"n@\">0</a></div><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
-			let code1="<div><a>スペシャル@2(価格)</a><div class=\"gr1\"><input type=\"number\" id=\"sp@1\" value=\"0\"><a> x </a><a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
+			let code1="<div><a>スペシャル@2(価格)</a><div class=\"gr1\"><input type=\"number\" id=\"sp@1\" value=\"0\"><a text-align=\"center\">x</a><a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
 
 			// CSVファイルを取得
 			let csv = new XMLHttpRequest();
