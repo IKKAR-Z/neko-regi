@@ -9,14 +9,15 @@
 		body{
 			user-select: none;
 		}
-		head{
+		upper{
+			hight : 50px;
 			display: grid;
 			grid-template-columns: 1fr 8fr 1fr;
 			align-items: center;
 			justify-items: center;
 
 		}
-		head > .gr2 {
+		upper > .gr2 {
 			width : 100%;
 			hight : 100%;
 			text-align: end;
@@ -78,7 +79,7 @@
 	</style>
 	</head>
 	<body>
-		<div class="head">
+		<div class="upper">
 			<div><input type="button" value="消去" onclick="reset()"></div>
 			<div id="msg" class="gr2">&yen;0</div>
 		</div>
