@@ -75,6 +75,9 @@
 		.content_class > div {
 			width: 100%;
 		}
+		.content_class > div > input{
+			align-self: end;
+		}
 		-->
 	</style>
 	</head>
@@ -150,7 +153,8 @@
 		<script>
 			let nmax=0;
 			const sp=3;
-			let code0="<div><a id=\"food@\"></a><br><a id=\"price@\"></a> x <a id=\"n@\">0</a><br><a class=\"srider\"><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></a><br></div>\n"
+			//let code0="<div><a id=\"food@\"></a><br><a id=\"price@\"></a> x <a id=\"n@\">0</a><br><a class=\"srider\"><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></a><br></div>\n"
+			let code0="<div><a id=\"food@\"></a><br><a id=\"price@\"></a> x <a id=\"n@\">0</a><br><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"><br></div>\n"
 
 			// CSVファイルを取得
 			let csv = new XMLHttpRequest();
