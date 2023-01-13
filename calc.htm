@@ -69,18 +69,19 @@
 			grid-template-rows: 80px 80px 80px 80px 80px 80px 80px 80px 80px;
 			grid-auto-flow: row;
 			align-items: center;
-			justify-items: left;			
+			justify-items: stretch;			
 			//選択されたタブの中身を表示に
 		}
 		.content_class > div {
-			width: 100%;
+			//width: 100%;
 			display: grid;
 			grid-template-rows: 1fr 1fr 1fr;
 			align-items: center;
-			justify-items: left;			
+			justify-items: stretch;			
 		}
 		.content_class > div > input{
-			justify-items: end;
+			width: 70%;
+			justify-self: end;
 		}
 		-->
 	</style>
@@ -158,7 +159,7 @@
 			let nmax=0;
 			const sp=3;
 			//let code0="<div><a id=\"food@\"></a><br><a id=\"price@\"></a> x <a id=\"n@\">0</a><br><a class=\"srider\"><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></a><br></div>\n"
-			let code0="<div><a id=\"food@\"></a><div><a id=\"price@\"></a> x <a id=\"n@\">0</a></div><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"><br></div>\n"
+			let code0="<div><a id=\"food@\"></a><div><a id=\"price@\"></a> x <a id=\"n@\">0</a></div><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
 
 			// CSVファイルを取得
 			let csv = new XMLHttpRequest();
