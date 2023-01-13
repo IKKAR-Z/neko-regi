@@ -9,14 +9,14 @@
 		body{
 			user-select: none;
 		}
-		h1{
+		head{
 			display: grid;
 			grid-template-columns: 1fr 8fr 1fr;
 			align-items: center;
 			justify-items: center;
 
 		}
-		h1 > .gr2 {
+		head > .gr2 {
 			width : 100%;
 			hight : 100%;
 			text-align: end;
@@ -78,10 +78,10 @@
 	</style>
 	</head>
 	<body>
-		<h1>
+		<div class="head">
 			<div><input type="button" value="消去" onclick="reset()"></div>
 			<div id="msg" class="gr2">&yen;0</div>
-		</h1>
+		</div>
 		<div class="tab_area" id="tabs" onchange="tab_button()">
 			<input type="radio" name="tab_name" id="tab1" >
 			<label class="tab_class" for="tab1">フード</label>
