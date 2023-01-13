@@ -14,20 +14,107 @@
 			justify-content: flex-end;
 		}
 		h1{
-			text-align: center;
+			display: flex;
+			justify-content: space-around;
+		}
+		h1 + a{
 			font-size: xx-large;
 		}
-		.menu-list{
-			width: 400px;
-			column-count: 2;
-			list-style-type: none;
-			text-align: left;
+		
+		.tab_class {
+			width: calc(100%/3);
+			height: 30px;
+			background-color: darkgrey;
+			line-height: 30px;
+			font-size: 15px;
+			text-align: center;
+			display: block;
+			float: left;
+			order: -1;
+			//タブ部の書式
 		}
+
+		input[name="tab_name"] {
+			display: none;
+			//ラジオボタン◎を非表示にする
+		}
+
+		input:checked + .tab_class {
+			background-color: cadetblue;
+			color: aliceblue;
+			//タブが選択された時の書式
+		}
+
+		.content_class {
+			display: flex;
+			flex-flow: column wrap;
+			list-style-type: none;
+			height: 45rem;
+			//display: block;
+			//選択されたタブの中身を表示に
+		}
+
 		-->
 	</style>
 	</head>
 	<body>
-		<div id="area1" class="menu-list">
+		<hr>
+		<h1>
+			<input type="button" value="消去" onclick="reset()"><a id="msg">&yen;0</a>
+		</h1>
+		<hr>
+		<div class="tab_area" id="tabs" onchange="tab_button()">
+			<input type="radio" name="tab_name" id="tab1" >
+			<label class="tab_class" for="tab1">フード</label>
+			<input type="radio" name="tab_name" id="tab2" >
+			<label class="tab_class" for="tab2">ドリンク</label>
+			<input type="radio" name="tab_name" id="tab3" >
+			<label class="tab_class" for="tab3">スペシャル</label>
+		</div>
+		<hr>
+		<div class="area1" id="area1">
+			<div class="content_class" id="page1">
+			</div>
+			<div class="content_class" id="page2">
+			</div>
+			<div class="content_class" id="page3">
+				<li>
+					<label for="sp0">スペシャル1(価格)</label>
+					<br>
+					<input type="number" id="sp0" value="0">
+					x 
+					<a id="n0">0</a>
+					<br>
+					<a class="srider">
+						<input type="range" id="quant0" min="0" max="20" value="0" step="1" list="tickmarks">
+					</a>
+					<br>
+				</li>
+				<li>
+					<label for="sp1">スペシャル2(価格)</label>
+					<br>
+					<input type="number" id="sp1" value="0">
+					x 
+					<a id="n1">0</a>
+					<br>
+					<a class="srider">
+						<input type="range" id="quant1" min="0" max="20" value="0" step="1" list="tickmarks">
+					</a>
+					<br>
+				</li>
+				<li>
+					<label for="sp2">スペシャル3(価格)</label>
+					<br>
+					<input type="number" id="sp2" value="0">
+					x 
+					<a id="n2">0</a>
+					<br>
+					<a class="srider">
+						<input type="range" id="quant2" min="0" max="20" value="0" step="1" list="tickmarks">
+					</a>
+					<br>
+				</li>
+			</div>
 		</div>
 		<datalist id="tickmarks">
 			<option value="0"></option>
@@ -37,16 +124,10 @@
 			<option value="16"></option>
 			<option value="20"></option>
 		</datalist>
-		<hr>
-		<h1>
-			<p id="msg">&yen;0</p>
-		</h1>
-		<hr>
-		<p><input type="button" value="消去" onclick="reset()"></p>
 		
 		<script>
 			let nmax=0;
-
+			const sp=3;
 			let code0="<li><a id=\"food@\"></a><br><a id=\"price@\"></a> x <a id=\"n@\">0</a><br><a class=\"srider\"><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></a><br></li>\n"
 
 			// CSVファイルを取得
@@ -75,32 +156,65 @@
 				if (cells.length != 1) {
 					nmax++;
 					let str = code0.split("@");
-					area1.innerHTML=area1.innerHTML+str.join(i);
-					eval('food'+i).innerText=cells[0];
-					eval('price'+i).innerText=cells[1];
+					if (cells[2]=="food"){
+						page1.innerHTML=page1.innerHTML+str.join((i+sp));
+					}else if(cells[2]=="drink"){
+						page2.innerHTML=page2.innerHTML+str.join((i+sp));
+					}
+					eval('food'+(i+sp)).innerText=cells[0];
+					eval('price'+(i+sp)).innerText=cells[1];
 
 				}
 			}
-
+			
 			area1.onchange = function calc(){
 				let a = 0;
-				for (var j=0, max=nmax; j<max; j++){
-					let price = parseInt(document.getElementById('price'+j).innerText,10);
+				let price;
+				for (let j=0, max=nmax+sp; j<max; j++){
+					//console.log('j:' , j);
+					if (j<sp){
+						price = parseInt(document.getElementById('sp'+j).value,10);
+						//console.log(typeof(price));
+					}else{
+						price = parseInt(document.getElementById('price'+j).innerText,10);
+					}
+					//console.log('price:' , price);
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
+					//console.log('quant:' , quant);
 					a = a+price*quant;
 				}
 
 				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(a);
 			}
+			
 			function reset(){
-				for (var k=0, max=nmax; k<max; k++){
+				for (let k=0, max=nmax+sp; k<max; k++){
 					document.getElementById('quant'+k).value="0";
 					eval('n'+k).innerText="0";
 				}
-				msg.innerText="0";
+				for (let k=0, max=sp; k<max; k++){
+					document.getElementById('sp'+k).value="0";
+				}
+				msg.innerText="\\0";
 			}
 			
-			for (var i=0, max=nmax; i<max; i++){
+			function tab_button(){
+				const elements = document.getElementsByName('tab_name');
+				const len =elements.length;
+				for (let i=0; i<len; i++){
+					if (elements.item(i).checked){
+						document.getElementById("page"+(i+1)).style.display =  "flex";
+					}else{
+						document.getElementById("page"+(i+1)).style.display =  "none";
+					}
+				}
+			}
+			
+			const radio_btn = document.getElementsByName('tab_name');
+			radio_btn[0].checked = true;
+			tab_button();
+			
+			for (let i=0, max=nmax+sp; i<max; i++){
 				let elem = document.getElementById('quant'+i);
 				let target = document.getElementById('n'+i);
 				let rangeValue = function (elem, target) {
