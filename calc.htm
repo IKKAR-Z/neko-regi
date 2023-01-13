@@ -23,7 +23,12 @@
 			justify-self: end;
 			font-size: xx-large;
 		}
-		
+		.tab_area{
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-columns: 1fr 1fr;
+			grid-auto-flow: column;
+		}
 		.tab_class {
 			width: calc(100%/3);
 			height: 30px;
@@ -53,7 +58,6 @@
 			flex-flow: column wrap;
 			list-style-type: none;
 			height: 45rem;
-			//display: block;
 			//選択されたタブの中身を表示に
 		}
 
