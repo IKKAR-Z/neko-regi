@@ -9,11 +9,6 @@
 		body{
 			user-select: none;
 		}
-		.srider{
-			align-self: end;
-			//display: flex;
-			//justify-content: flex-end;
-		}
 		h1{
 			display: grid;
 			grid-template-columns: 1fr 8fr 1fr;
@@ -32,8 +27,6 @@
 			column-gap: 1px;
 		}
 		.tab_class {
-			//width: calc(100%/3);
-			//height: 30px;
 			background-color: darkgrey;
 			line-height: 30px;
 			font-size: 15px;
@@ -73,7 +66,6 @@
 			//選択されたタブの中身を表示に
 		}
 		.content_class > div {
-			//width: 100%;
 			display: grid;
 			grid-template-rows: 1fr 1fr 1fr;
 			align-items: center;
@@ -108,42 +100,6 @@
 			<div class="content_class" id="page2">
 			</div>
 			<div class="content_class" id="page3">
-				<li>
-					<label for="sp0">スペシャル1(価格)</label>
-					<br>
-					<input type="number" id="sp0" value="0">
-					x 
-					<a id="n0">0</a>
-					<br>
-					<a class="srider">
-						<input type="range" id="quant0" min="0" max="20" value="0" step="1" list="tickmarks">
-					</a>
-					<br>
-				</li>
-				<li>
-					<label for="sp1">スペシャル2(価格)</label>
-					<br>
-					<input type="number" id="sp1" value="0">
-					x 
-					<a id="n1">0</a>
-					<br>
-					<a class="srider">
-						<input type="range" id="quant1" min="0" max="20" value="0" step="1" list="tickmarks">
-					</a>
-					<br>
-				</li>
-				<li>
-					<label for="sp2">スペシャル3(価格)</label>
-					<br>
-					<input type="number" id="sp2" value="0">
-					x 
-					<a id="n2">0</a>
-					<br>
-					<a class="srider">
-						<input type="range" id="quant2" min="0" max="20" value="0" step="1" list="tickmarks">
-					</a>
-					<br>
-				</li>
 			</div>
 		</div>
 		<datalist id="tickmarks">
@@ -158,8 +114,8 @@
 		<script>
 			let nmax=0;
 			const sp=3;
-			//let code0="<div><a id=\"food@\"></a><br><a id=\"price@\"></a> x <a id=\"n@\">0</a><br><a class=\"srider\"><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></a><br></div>\n"
 			let code0="<div><a id=\"food@\"></a><div><a id=\"price@\"></a> x <a id=\"n@\">0</a></div><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
+			let code1="<div><label for=\"sp@1\">スペシャル@2(価格)</label><div><input type=\"number\" id=\"sp@1\" value=\"0\"> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
 
 			// CSVファイルを取得
 			let csv = new XMLHttpRequest();
@@ -196,6 +152,11 @@
 					eval('price'+(i+sp)).innerText=cells[1];
 
 				}
+			}
+			
+			for (let i=0; <sp; i++){
+				let str = code1.split("@1");
+				page3.innerHTML=page3.innerHTML+str.join(i).replace("@2",(i+1));
 			}
 			
 			area1.onchange = function calc(){
