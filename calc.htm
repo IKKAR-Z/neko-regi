@@ -27,7 +27,7 @@
 		}
 		.tab_area{
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
 			grid-auto-flow: row;
 			column-gap: 1px;
 		}
@@ -89,7 +89,10 @@
 			<input type="radio" name="tab_name" id="tab2" >
 			<label class="tab_class" for="tab2">ドリンク</label>
 			<input type="radio" name="tab_name" id="tab3" >
-			<label class="tab_class" for="tab3">スペシャル</label>
+			<label class="tab_class" for="tab3">イベント</label>
+			<input type="radio" name="tab_name" id="tab4" >
+			<label class="tab_class" for="tab4">スペシャル</label>
+
 		</div>
 		
 		<div class="area1" id="area1">
@@ -98,6 +101,8 @@
 			<div class="content_class" id="page2">
 			</div>
 			<div class="content_class" id="page3">
+			</div>
+			<div class="content_class" id="page4">
 			</div>
 		</div>
 		<datalist id="tickmarks">
@@ -145,6 +150,8 @@
 						page1.innerHTML=page1.innerHTML+str.join((i+sp));
 					}else if(cells[2]=="drink"){
 						page2.innerHTML=page2.innerHTML+str.join((i+sp));
+					}else if(cells[2]=="event"){
+						page3.innerHTML=page3.innerHTML+str.join((i+sp));
 					}
 					eval('food'+(i+sp)).innerText=cells[0];
 					eval('price'+(i+sp)).innerText=cells[1];
@@ -154,7 +161,7 @@
 			
 			for (let i=0; i<sp; i++){
 				let str = code1.split("@1");
-				page3.innerHTML=page3.innerHTML+str.join(i).replace("@2",(i+1));
+				page4.innerHTML=page4.innerHTML+str.join(i).replace("@2",(i+1));
 			}
 			
 			area1.onchange = function calc(){
