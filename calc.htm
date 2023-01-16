@@ -182,32 +182,17 @@
 					//console.log('price:' , price);
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
 					parent = document.querySelector('quant'+j).parentElement;
-					switch(parent.id){
-						case "page1":
-							page1 = page1+price*quant;
-							if(page1>0){
-								document.getElementById("label1").style.textDecoration = "underline";
-							}
-							break;
-						case "page2":
-							page2 = page2+price*quant;
-							if(page1>0){
-								document.getElementById("label2").style.textDecoration = "underline";
-							}
-							break;
-						case "page3":
-							page3 = page3+price*quant;
-							if(page1>0){
-								document.getElementById("label3").style.textDecoration = "underline";
-							}
-							break;
-						case "page4":
-							page4 = page4+price*quant;
-							if(page1>0){
-								document.getElementById("label4").style.textDecoration = "underline";
-							}
-							break;
+
+					let inner = function (p,n){
+						eval(p) = eval(p)+price*quant;
+						if(eval(p)>0){
+							document.getElementById('label'+n).style.textDecoration = "underline";
+						}else{
+							document.getElementById('label'+n).style.textDecoration = "none";
+						}
 					}
+					inner(parent,parent.slice(-1));
+
 					//console.log('quant:' , quant);
 					//a = a+price*quant;
 				}
