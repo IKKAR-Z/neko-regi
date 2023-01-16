@@ -198,6 +198,7 @@
 					//a = a+price*quant;
 				}
 				for (i=0,max=page.length;i<max;i++){
+					console.log('i:' , i);
 					a=a+page[i];
 				}
 				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(a);
