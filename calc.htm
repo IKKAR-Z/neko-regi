@@ -117,8 +117,8 @@
 		<script>
 			let nmax=0;
 			const sp=3;
-			let code0="<div><a id=\"food@\"></a><div><a id=\"price@\"></a> x <a id=\"n@\">0</a></div><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
-			let code1="<div><a>スペシャル@2(価格)</a><div class=\"gr1\"><input type=\"number\" id=\"sp@1\" value=\"0\"> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
+			let code0="<div><a id=\"food@1\"></a><div><a id=\"price@1\" class=\"@2\"></a> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
+			let code1="<div><a>スペシャル@2(価格)</a><div class=\"gr1\"><input type=\"number\" id=\"sp@1\" value=\"0\" class=\"@3\"> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
 
 			// CSVファイルを取得
 			let csv = new XMLHttpRequest();
@@ -145,13 +145,13 @@
 				let cells = lines[i].split(",");
 				if (cells.length != 1) {
 					nmax++;
-					let str = code0.split("@");
+					let str = code0.split("@1");
 					if (cells[2]=="food"){
-						page1.innerHTML=page1.innerHTML+str.join((i+sp));
+						page1.innerHTML=page1.innerHTML+str.join((i+sp)).replace("@2","pg1");
 					}else if(cells[2]=="drink"){
-						page2.innerHTML=page2.innerHTML+str.join((i+sp));
+						page2.innerHTML=page2.innerHTML+str.join((i+sp)).replace("@2","pg2");
 					}else if(cells[2]=="event"){
-						page3.innerHTML=page3.innerHTML+str.join((i+sp));
+						page3.innerHTML=page3.innerHTML+str.join((i+sp)).replace("@2","pg3");
 					}
 					eval('food'+(i+sp)).innerText=cells[0];
 					eval('price'+(i+sp)).innerText=cells[1];
@@ -161,7 +161,7 @@
 			
 			for (let i=0; i<sp; i++){
 				let str = code1.split("@1");
-				page4.innerHTML=page4.innerHTML+str.join(i).replace("@2",(i+1));
+				page4.innerHTML=page4.innerHTML+str.join(i).replace("@2",(i+1)).replace("@3","pg4");
 			}
 			
 			area1.onchange = function calc(){
@@ -170,28 +170,29 @@
 				let page3 = 0;
 				let page4 = 0;
 				let price;
-				let parent;
+				let pg;
 				for (let j=0, max=nmax+sp; j<max; j++){
 					//console.log('j:' , j);
 					if (j<sp){
 						price = parseInt(document.getElementById('sp'+j).value,10);
+						pg=document.getElementById('sp'+j).className;
 						//console.log(typeof(price));
 					}else{
 						price = parseInt(document.getElementById('price'+j).innerText,10);
+						pg=document.getElementById('price'+j).className;
 					}
 					//console.log('price:' , price);
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
-					parent = document.querySelector('quant'+j).parentElement;
 
-					let inner = function (p,n){
-						eval(p) = eval(p)+price*quant;
-						if(eval(p)>0){
-							document.getElementById('label'+n).style.textDecoration = "underline";
+					let inner = function (p){
+						eval("page" + p) = eval("page" + p)+price*quant;
+						if(eval("page" + p)>0){
+							document.getElementById('label'+p).style.textDecoration = "underline";
 						}else{
-							document.getElementById('label'+n).style.textDecoration = "none";
+							document.getElementById('label'+p).style.textDecoration = "none";
 						}
 					}
-					inner(parent,parent.slice(-1));
+					inner(pg.slice(-1));
 
 					//console.log('quant:' , quant);
 					//a = a+price*quant;
