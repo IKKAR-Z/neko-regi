@@ -85,13 +85,13 @@
 		</div>
 		<div class="tab_area" id="tabs" onchange="tab_button()">
 			<input type="radio" name="tab_name" id="tab1" >
-			<label class="tab_class" for="tab1">フード</label>
+			<label class="tab_class" for="tab1" id="label1">フード</label>
 			<input type="radio" name="tab_name" id="tab2" >
-			<label class="tab_class" for="tab2">ドリンク</label>
+			<label class="tab_class" for="tab2" id="label2">ドリンク</label>
 			<input type="radio" name="tab_name" id="tab3" >
-			<label class="tab_class" for="tab3">イベント</label>
+			<label class="tab_class" for="tab3" id="label3">イベント</label>
 			<input type="radio" name="tab_name" id="tab4" >
-			<label class="tab_class" for="tab4">スペシャル</label>
+			<label class="tab_class" for="tab4" id="label4">スペシャル</label>
 
 		</div>
 		
@@ -165,8 +165,12 @@
 			}
 			
 			area1.onchange = function calc(){
-				let a = 0;
+				let page1 = 0;
+				let page2 = 0;
+				let page3 = 0;
+				let page4 = 0;
 				let price;
+				let parent;
 				for (let j=0, max=nmax+sp; j<max; j++){
 					//console.log('j:' , j);
 					if (j<sp){
@@ -177,11 +181,38 @@
 					}
 					//console.log('price:' , price);
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
+					parent = document.querySelector('quant'+j).parentElement;
+					switch(parent.id){
+						case "page1":
+							page1 = page1+price*quant;
+							if(page1>0){
+								document.getElementById("label1").style.textDecoration = "underline";
+							}
+							break;
+						case "page2":
+							page2 = page2+price*quant;
+							if(page1>0){
+								document.getElementById("label2").style.textDecoration = "underline";
+							}
+							break;
+						case "page3":
+							page3 = page3+price*quant;
+							if(page1>0){
+								document.getElementById("label3").style.textDecoration = "underline";
+							}
+							break;
+						case "page4":
+							page4 = page4+price*quant;
+							if(page1>0){
+								document.getElementById("label4").style.textDecoration = "underline";
+							}
+							break;
+					}
 					//console.log('quant:' , quant);
-					a = a+price*quant;
+					//a = a+price*quant;
 				}
 
-				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(a);
+				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(( page1 + page2 + page3 + page4));
 			}
 			
 			function reset(){
@@ -191,6 +222,9 @@
 				}
 				for (let k=0, max=sp; k<max; k++){
 					document.getElementById('sp'+k).value="0";
+				}
+				for (let k=1, max=4; k<=max; k++){
+					document.getElementById('label'+k).style.textDecoration = "underline";
 				}
 				msg.innerText="\\0";
 			}
