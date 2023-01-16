@@ -181,11 +181,13 @@
 						price = parseInt(document.getElementById('price'+j).innerText,10);
 						pg=document.getElementById('price'+j).className;
 					}
-					//console.log('price:' , price);
+					console.log('pg:' , pg);
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
 
 					let inner = function (p){
+						console.log('p:' , p);
 						eval("page" + p) = eval("page" + p)+price*quant;
+						console.log("page" + p +":", "page" + p);
 						if(eval("page" + p)>0){
 							document.getElementById('label'+p).style.textDecoration = "underline";
 						}else{
