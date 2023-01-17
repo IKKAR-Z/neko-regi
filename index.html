@@ -85,13 +85,13 @@
 		</div>
 		<div class="tab_area" id="tabs" onchange="tab_button()">
 			<input type="radio" name="tab_name" id="tab1" >
-			<label class="tab_class" for="tab1">フード</label>
+			<label class="tab_class" for="tab1" id="label1">フード</label>
 			<input type="radio" name="tab_name" id="tab2" >
-			<label class="tab_class" for="tab2">ドリンク</label>
+			<label class="tab_class" for="tab2" id="label2">ドリンク</label>
 			<input type="radio" name="tab_name" id="tab3" >
-			<label class="tab_class" for="tab3">イベント</label>
+			<label class="tab_class" for="tab3" id="label3">イベント</label>
 			<input type="radio" name="tab_name" id="tab4" >
-			<label class="tab_class" for="tab4">スペシャル</label>
+			<label class="tab_class" for="tab4" id="label4">スペシャル</label>
 
 		</div>
 		
@@ -117,8 +117,8 @@
 		<script>
 			let nmax=0;
 			const sp=3;
-			let code0="<div><a id=\"food@\"></a><div><a id=\"price@\"></a> x <a id=\"n@\">0</a></div><input type=\"range\" id=\"quant@\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
-			let code1="<div><a>スペシャル@2(価格)</a><div class=\"gr1\"><input type=\"number\" id=\"sp@1\" value=\"0\"> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
+			let code0="<div><a id=\"food@1\"></a><div><a id=\"price@1\" class=\"@2\"></a> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
+			let code1="<div><a>スペシャル@2(価格)</a><div class=\"gr1\"><input type=\"number\" id=\"sp@1\" value=\"0\" class=\"@3\"> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
 
 			// CSVファイルを取得
 			let csv = new XMLHttpRequest();
@@ -145,52 +145,68 @@
 				let cells = lines[i].split(",");
 				if (cells.length != 1) {
 					nmax++;
-					let str = code0.split("@");
+					let str = code0.split("@1");
 					if (cells[2]=="food"){
-						page1.innerHTML=page1.innerHTML+str.join((i+sp));
+						page1.innerHTML=page1.innerHTML+str.join((i+sp)).replace("@2","pg1");
 					}else if(cells[2]=="drink"){
-						page2.innerHTML=page2.innerHTML+str.join((i+sp));
+						page2.innerHTML=page2.innerHTML+str.join((i+sp)).replace("@2","pg2");
 					}else if(cells[2]=="event"){
-						page3.innerHTML=page3.innerHTML+str.join((i+sp));
+						page3.innerHTML=page3.innerHTML+str.join((i+sp)).replace("@2","pg3");
 					}
-					eval('food'+(i+sp)).innerText=cells[0];
-					eval('price'+(i+sp)).innerText=cells[1];
+					document.getElementById('food'+(i+sp)).innerText=cells[0];
+					document.getElementById('price'+(i+sp)).innerText=cells[1];
 
 				}
 			}
 			
 			for (let i=0; i<sp; i++){
 				let str = code1.split("@1");
-				page4.innerHTML=page4.innerHTML+str.join(i).replace("@2",(i+1));
+				page4.innerHTML=page4.innerHTML+str.join(i).replace("@2",(i+1)).replace("@3","pg4");
 			}
 			
 			area1.onchange = function calc(){
-				let a = 0;
+				let page = [0,0,0,0];
+				let a=0;
 				let price;
+				let pg;
 				for (let j=0, max=nmax+sp; j<max; j++){
 					//console.log('j:' , j);
 					if (j<sp){
 						price = parseInt(document.getElementById('sp'+j).value,10);
+						pg=document.getElementById('sp'+j).className;
 						//console.log(typeof(price));
 					}else{
 						price = parseInt(document.getElementById('price'+j).innerText,10);
+						pg=document.getElementById('price'+j).className;
 					}
-					//console.log('price:' , price);
 					let quant = parseInt(document.getElementById('quant'+j).value,10);
-					//console.log('quant:' , quant);
-					a = a+price*quant;
-				}
 
+					let inner = function (p){
+						page[p-1] = page[p-1] + price*quant;
+						if(page[p-1]>0){
+							document.getElementById('label'+p).style.textDecoration = "underline";
+						}else{
+							document.getElementById('label'+p).style.textDecoration = "none";
+						}
+					}
+					inner(Number(pg.slice(-1)));
+				}
+				for (i=0,max=page.length;i<max;i++){
+					a=a+page[i];
+				}
 				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(a);
 			}
 			
 			function reset(){
 				for (let k=0, max=nmax+sp; k<max; k++){
 					document.getElementById('quant'+k).value="0";
-					eval('n'+k).innerText="0";
+					document.getElementById('n'+k).innerText="0";
 				}
 				for (let k=0, max=sp; k<max; k++){
 					document.getElementById('sp'+k).value="0";
+				}
+				for (let k=1, max=4; k<=max; k++){
+					document.getElementById('label'+k).style.textDecoration = "none";
 				}
 				msg.innerText="\\0";
 			}
