@@ -152,6 +152,8 @@
 						page2.innerHTML=page2.innerHTML+str.join((i+sp)).replace("@2","pg2");
 					}else if(cells[2]=="event"){
 						page3.innerHTML=page3.innerHTML+str.join((i+sp)).replace("@2","pg3");
+					}else{
+						continue;
 					}
 					document.getElementById('food'+(i+sp)).innerText=cells[0];
 					document.getElementById('price'+(i+sp)).innerText=cells[1];
