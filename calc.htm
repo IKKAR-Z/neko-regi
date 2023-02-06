@@ -144,6 +144,7 @@
 			for (let i = 0; i < lines.length; ++i) {
 				let cells = lines[i].split(",");
 				if (cells.length != 1) {
+					console.log((i+sp),':',cells[0]);
 					nmax++;
 					let str = code0.split("@1");
 					if (cells[2]=="food"){
