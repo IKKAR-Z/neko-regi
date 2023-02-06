@@ -144,21 +144,20 @@
 			for (let i = 0; i < lines.length; ++i) {
 				let cells = lines[i].split(",");
 				if (cells.length != 1) {
-					console.log((i+sp),':',cells[0]);
-					nmax++;
+					console.log((nmax+sp),':',cells[0]);
 					let str = code0.split("@1");
 					if (cells[2]=="food"){
-						page1.innerHTML=page1.innerHTML+str.join((i+sp)).replace("@2","pg1");
+						page1.innerHTML=page1.innerHTML+str.join((nmax+sp)).replace("@2","pg1");
 					}else if(cells[2]=="drink"){
-						page2.innerHTML=page2.innerHTML+str.join((i+sp)).replace("@2","pg2");
+						page2.innerHTML=page2.innerHTML+str.join((nmax+sp)).replace("@2","pg2");
 					}else if(cells[2]=="event"){
-						page3.innerHTML=page3.innerHTML+str.join((i+sp)).replace("@2","pg3");
+						page3.innerHTML=page3.innerHTML+str.join((nmax+sp)).replace("@2","pg3");
 					}else{
 						continue;
 					}
-					document.getElementById('food'+(i+sp)).innerText=cells[0];
-					document.getElementById('price'+(i+sp)).innerText=cells[1];
-
+					document.getElementById('food'+(nmax+sp)).innerText=cells[0];
+					document.getElementById('price'+(nmax+sp)).innerText=cells[1];
+					nmax++;	
 				}
 			}
 			
