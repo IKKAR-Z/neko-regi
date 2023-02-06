@@ -154,7 +154,7 @@
 					}else{
 						continue;
 					}
-					console.log((nmax+sp),':',cells[0]);
+					//console.log((nmax+sp),':',cells[0]);
 					document.getElementById('food'+(nmax+sp)).innerText=cells[0];
 					document.getElementById('price'+(nmax+sp)).innerText=cells[1];
 					nmax++;	
@@ -172,13 +172,13 @@
 				let price;
 				let pg;
 				for (let j=0, max=nmax+sp; j<max; j++){
-					console.log('j:' , j);
+					//console.log('j:' , j);
 					if (j<sp){
 						price = parseInt(document.getElementById('sp'+j).value,10);
 						pg=document.getElementById('sp'+j).className;
 						//console.log(typeof(price));
 					}else{
-						console.log('price'+j+':',document.getElementById('price'+j).innerText);
+						//console.log('price'+j+':',document.getElementById('price'+j).innerText);
 						price = parseInt(document.getElementById('price'+j).innerText,10);
 						pg=document.getElementById('price'+j).className;
 					}
@@ -238,7 +238,7 @@
 						target.innerHTML = elem.value;
 					}
 				}
-				console.log("i:",i);
+				//console.log("i:",i);
 				elem.addEventListener('input', rangeValue(elem,target));
 			}
 			
