@@ -144,20 +144,20 @@
 			for (let i = 0; i < lines.length; ++i) {
 				let cells = lines[i].split(",");
 				if (cells.length != 1) {
-					nmax++;
 					let str = code0.split("@1");
 					if (cells[2]=="food"){
-						page1.innerHTML=page1.innerHTML+str.join((i+sp)).replace("@2","pg1");
+						page1.innerHTML=page1.innerHTML+str.join((nmax+sp)).replace("@2","pg1");
 					}else if(cells[2]=="drink"){
-						page2.innerHTML=page2.innerHTML+str.join((i+sp)).replace("@2","pg2");
+						page2.innerHTML=page2.innerHTML+str.join((nmax+sp)).replace("@2","pg2");
 					}else if(cells[2]=="event"){
-						page3.innerHTML=page3.innerHTML+str.join((i+sp)).replace("@2","pg3");
+						page3.innerHTML=page3.innerHTML+str.join((nmax+sp)).replace("@2","pg3");
 					}else{
 						continue;
 					}
-					document.getElementById('food'+(i+sp)).innerText=cells[0];
-					document.getElementById('price'+(i+sp)).innerText=cells[1];
-
+					//console.log((nmax+sp),':',cells[0]);
+					document.getElementById('food'+(nmax+sp)).innerText=cells[0];
+					document.getElementById('price'+(nmax+sp)).innerText=cells[1];
+					nmax++;	
 				}
 			}
 			
@@ -178,6 +178,7 @@
 						pg=document.getElementById('sp'+j).className;
 						//console.log(typeof(price));
 					}else{
+						//console.log('price'+j+':',document.getElementById('price'+j).innerText);
 						price = parseInt(document.getElementById('price'+j).innerText,10);
 						pg=document.getElementById('price'+j).className;
 					}
@@ -237,6 +238,7 @@
 						target.innerHTML = elem.value;
 					}
 				}
+				//console.log("i:",i);
 				elem.addEventListener('input', rangeValue(elem,target));
 			}
 			
