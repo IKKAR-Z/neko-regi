@@ -117,9 +117,8 @@
 		<script>
 			let nmax=0;
 			const sp=3;
-			let code0="<div><a id=\"food@1\"></a><div><a id=\"price@1\" class=\"@2\"></a> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
-			let code1="<div><a>スペシャル@2(価格)</a><div class=\"gr1\"><input type=\"number\" id=\"sp@1\" value=\"0\" class=\"@3\"> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
-
+			let code0="<div><a id=\"food@1\"></a><div><a id=\"price@1\" class=\"@2\"></a> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"20\" step=\"1\" list=\"tickmarks\"></div>\n"
+			let code1="<div><a>スペシャル@2(価格)</a><div class=\"gr1\"><input type=\"number\" id=\"sp@1\" value=\"0\" class=\"@3\"> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"20\" step=\"1\" list=\"tickmarks\"></div>\n"
 			// CSVファイルを取得
 			let csv = new XMLHttpRequest();
 
@@ -182,7 +181,7 @@
 						price = parseInt(document.getElementById('price'+j).innerText,10);
 						pg=document.getElementById('price'+j).className;
 					}
-					let quant = parseInt(document.getElementById('quant'+j).value,10);
+					let quant = (20-parseInt(document.getElementById('quant'+j).value,10));
 
 					let inner = function (p){
 						page[p-1] = page[p-1] + price*quant;
@@ -202,7 +201,7 @@
 			
 			function reset(){
 				for (let k=0, max=nmax+sp; k<max; k++){
-					document.getElementById('quant'+k).value="0";
+					document.getElementById('quant'+k).value="20";
 					document.getElementById('n'+k).innerText="0";
 				}
 				for (let k=0, max=sp; k<max; k++){
@@ -235,7 +234,7 @@
 				let target = document.getElementById('n'+i);
 				let rangeValue = function (elem, target) {
 					return function(evt) {
-						target.innerHTML = elem.value;
+						target.innerHTML = (20-elem.value);
 					}
 				}
 				//console.log("i:",i);
