@@ -8,6 +8,10 @@
 		<!--
 		body{
 			user-select: none;
+			margin-left: 18px;
+			margin-right: 18px;
+			margin-top: 0px;
+			margin-bottom: 0px;
 		}
 		.upper{
 			height : 60px;
@@ -58,7 +62,7 @@
 			grid-auto-flow: row;
 			align-items: center;
 			justify-items: stretch;			
-			column-gap: 5px;
+			column-gap: 20px;
 			//選択されたタブの中身を表示に
 		}
 		.content_class > div {
@@ -67,13 +71,44 @@
 			align-items: center;
 			justify-items: stretch;			
 		}
+		/*
 		.content_class > div > input{
 			width: 70%;
 			justify-self: end;
 		}
+		*/
+		input[type="range"] {
+			-webkit-appearance: none;
+		}
+		input[type="range"]:focus {
+			outline: none;
+		}
+		input[type="range"]::-webkit-slider-runnable-track{
+			appearance: none;
+			cursor: pointer;
+			background: rgba(218, 255, 255, 0.8);
+			height: 14px;
+			width: 100%;
+			border-radius: 10px;
+			border: solid 1px #d9d9d9;
+			outline: 0;
+		}
+		input[type="range"]::-webkit-slider-thumb{
+			-webkit-appearance: none;
+			background: #ff8adb;
+			width: 15px;
+			height: 15px;
+			align-items: center;
+			border-radius: 50%;
+			border: solid 1px #000000;
+			box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+		}
+		input[type="range"]:active::-webkit-slider-thumb {
+			box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
+		}
 		input[type="number"]{
 			width : 80px;
-			text-align : end;		
+			text-align : end;
 		}
 		-->
 	</style>
@@ -117,9 +152,8 @@
 		<script>
 			let nmax=0;
 			const sp=3;
-			let code0="<div><a id=\"food@1\"></a><div><a id=\"price@1\" class=\"@2\"></a> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
-			let code1="<div><a>スペシャル@2(価格)</a><div class=\"gr1\"><input type=\"number\" id=\"sp@1\" value=\"0\" class=\"@3\"> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"0\" step=\"1\" list=\"tickmarks\"></div>\n"
-
+			let code0="<div><a id=\"food@1\"></a><div><a id=\"price@1\" class=\"@2\"></a> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"20\" step=\"1\" list=\"tickmarks\"></div>\n"
+			let code1="<div><a>スペシャル@2(価格)</a><div class=\"gr1\"><input type=\"number\" id=\"sp@1\" value=\"0\" class=\"@3\"> x <a id=\"n@1\">0</a></div><input type=\"range\" id=\"quant@1\" min=\"0\" max=\"20\" value=\"20\" step=\"1\" list=\"tickmarks\"></div>\n"
 			// CSVファイルを取得
 			let csv = new XMLHttpRequest();
 
@@ -182,7 +216,7 @@
 						price = parseInt(document.getElementById('price'+j).innerText,10);
 						pg=document.getElementById('price'+j).className;
 					}
-					let quant = parseInt(document.getElementById('quant'+j).value,10);
+					let quant = (20-parseInt(document.getElementById('quant'+j).value,10));
 
 					let inner = function (p){
 						page[p-1] = page[p-1] + price*quant;
@@ -202,7 +236,7 @@
 			
 			function reset(){
 				for (let k=0, max=nmax+sp; k<max; k++){
-					document.getElementById('quant'+k).value="0";
+					document.getElementById('quant'+k).value="20";
 					document.getElementById('n'+k).innerText="0";
 				}
 				for (let k=0, max=sp; k<max; k++){
@@ -235,7 +269,7 @@
 				let target = document.getElementById('n'+i);
 				let rangeValue = function (elem, target) {
 					return function(evt) {
-						target.innerHTML = elem.value;
+						target.innerHTML = (20-elem.value);
 					}
 				}
 				//console.log("i:",i);
