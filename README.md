@@ -11,10 +11,10 @@ https://ikkar-z.github.io/neko-regi/
 ファイル詳細  
 １.index.html：レジ本体  
 ２.menu-list.csv：メニューリスト  
-カンマ区切りで"品名,価格,種別(food/drink/event)"を記入  
-  種別について  
-  food:食べ物  
-  drink:飲み物  
-  event:期間限定もの  
+   カンマ区切りで"品名,価格,種別(food/drink/event)"を記入  
+   種別について  
+     food:食べ物  
+     drink:飲み物  
+     event:期間限定もの  
   
 ３.他のファイルは関係なし  
