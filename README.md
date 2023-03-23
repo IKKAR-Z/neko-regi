@@ -16,5 +16,4 @@ https://ikkar-z.github.io/neko-regi/
      food:食べ物  
      drink:飲み物  
      event:期間限定もの  
-  
 ３.他のファイルは関係なし  
