@@ -234,6 +234,7 @@
 				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(a);
 			}
 			
+			//消去ボタン
 			function reset(){
 				for (let k=0, max=nmax+sp; k<max; k++){
 					document.getElementById('quant'+k).value="20";
@@ -245,7 +246,7 @@
 				for (let k=1, max=4; k<=max; k++){
 					document.getElementById('label'+k).style.textDecoration = "none";
 				}
-				msg.innerText="\\ 0";
+				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(0);;
 			}
 			
 			function tab_button(){
