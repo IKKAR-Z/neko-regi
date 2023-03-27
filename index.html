@@ -116,7 +116,7 @@
 	<body>
 		<div class="upper">
 			<div><input type="button" value="消去" onclick="reset()"></div>
-			<div id="msg" class="gr2">&yen; 0</div>
+			<div id="msg" class="gr2"></div>
 		</div>
 		<div class="tab_area" id="tabs" onchange="tab_button()">
 			<input type="radio" name="tab_name" id="tab1" >
@@ -195,6 +195,8 @@
 				}
 			}
 			
+			msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(0);
+			
 			for (let i=0; i<sp; i++){
 				let str = code1.split("@1");
 				page4.innerHTML=page4.innerHTML+str.join(i).replace("@2",(i+1)).replace("@3","pg4");
@@ -246,7 +248,7 @@
 				for (let k=1, max=4; k<=max; k++){
 					document.getElementById('label'+k).style.textDecoration = "none";
 				}
-				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(0);;
+				msg.innerText=Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(0);
 			}
 			
 			function tab_button(){
